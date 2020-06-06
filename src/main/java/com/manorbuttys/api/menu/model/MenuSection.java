@@ -7,7 +7,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Set;
 
 @Setter
 @DynamoDBTable(tableName = "AnotherMenu")

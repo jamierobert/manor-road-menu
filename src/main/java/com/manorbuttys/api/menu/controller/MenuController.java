@@ -13,7 +13,7 @@ public class MenuController {
     MenuRepository menuRepository;
 
     @GetMapping(value = "/menu", produces = "application/json")
-    public Iterable<MenuSection> getMenu(){
+    public Iterable<MenuSection> getMenu() {
         return menuRepository.findAll();
     }
 }
