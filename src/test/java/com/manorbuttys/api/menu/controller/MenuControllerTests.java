@@ -28,7 +28,11 @@ public class MenuControllerTests {
 
         mockMvc.perform(get("/menu"))
                 .andDo(print())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.sections[0].name").value("Lunch Menu"));
+                .andExpect(content()
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].name")
+                        .value("Dinner Menu"))
+                .andExpect(jsonPath("$[0].items[0].name")
+                        .value("Devious Monkey"));
     }
 }
