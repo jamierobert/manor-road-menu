@@ -1,0 +1,15 @@
+{
+  "name": "Breakfast Items",
+  "items": [
+    {
+      "name": "Bacon Butty",
+      "price": 2.50,
+      "count": 1
+    },
+    {
+      "name": "Egg Butty",
+      "price": 2.50,
+      "count": 0
+    }
+  ]
+}

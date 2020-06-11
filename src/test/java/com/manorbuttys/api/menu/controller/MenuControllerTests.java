@@ -1,6 +1,7 @@
 package com.manorbuttys.api.menu.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.manorbuttys.api.menu.repository.MenuRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,21 +19,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MenuControllerTests {
 
     @Autowired
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Autowired
-    ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
+
+    @Autowired
+    private MenuRepository menuRepository;
+
 
     @Test
     public void testMenuEndpoint() throws Exception {
-
         mockMvc.perform(get("/menu"))
                 .andDo(print())
                 .andExpect(content()
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].name")
-                        .value("Dinner Menu"))
+                        .value("Lunch Items"))
                 .andExpect(jsonPath("$[0].items[0].name")
-                        .value("Devious Monkey"));
+                        .value("Roast Beef and Onion Baguette"));
     }
 }

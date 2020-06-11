@@ -2,8 +2,9 @@ package com.manorbuttys.api.menu.repository;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.manorbuttys.api.menu.MenuApplication;
-import com.manorbuttys.api.menu.model.Item;
 import com.manorbuttys.api.menu.model.MenuSection;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +15,10 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.List;
 
+import static com.manorbuttys.api.menu.utils.TestConstants.buildMenuSection;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -31,10 +32,12 @@ import static org.hamcrest.Matchers.is;
 public class MenuRepositoryIntegrationTest {
 
     @Autowired
-    MenuRepository menuRepository;
+    private MenuRepository menuRepository;
     private DynamoDBMapper dynamoDBMapper;
     @Autowired
     private AmazonDynamoDB amazonDynamoDB;
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @BeforeEach
     public void setup() {
@@ -44,27 +47,20 @@ public class MenuRepositoryIntegrationTest {
 
     @Test
     public void testMenuIsReturned() {
-
-        //Given
-        Item item = new Item();
-        item.setName("Devious Monkey");
-        item.setCount(1);
-        item.setPrice(BigDecimal.valueOf(2.5));
-
-        List<Item> items = new ArrayList<>();
-        items.add(item);
-
-        MenuSection menuSection = new MenuSection();
-        menuSection.setName("Dinner Menu");
-        menuSection.setItems(items);
+        MenuSection menuSection = buildMenuSection();
 
         menuRepository.save(menuSection);
 
-        //When
         List<MenuSection> result = (List<MenuSection>) menuRepository.findAll();
 
         //Then
         assertThat(result.size(), is(1));
         assertThat(result.get(0).getName(), is(menuSection.getName()));
+    }
+
+    @Test
+    public void fillDb() throws Exception{
+        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>(){});
+        menuSections.forEach(section -> menuRepository.save(section));
     }
 }

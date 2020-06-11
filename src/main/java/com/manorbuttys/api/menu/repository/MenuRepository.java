@@ -9,6 +9,4 @@ import java.util.Optional;
 @EnableScan
 public interface MenuRepository extends CrudRepository<MenuSection, String> {
     Optional<MenuSection> findById(String id);
-
-
 }
