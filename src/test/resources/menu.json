@@ -1,6 +1,7 @@
 [
   {
     "name": "Breakfast Items",
+    "sortOrder": 1,
     "items": [
       {
         "name": "Bacon Butty",
@@ -16,6 +17,7 @@
   },
   {
     "name": "Lunch Items",
+    "sortOrder": 2,
     "items": [
       {
         "name": "Roast Beef and Onion Baguette",
@@ -31,6 +33,7 @@
   },
   {
     "name": "Dinner Items",
+    "sortOrder": 2,
     "items": [
       {
         "name": "Fish Chips and Mushy Peas",

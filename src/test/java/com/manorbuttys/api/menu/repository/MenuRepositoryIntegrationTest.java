@@ -33,7 +33,6 @@ public class MenuRepositoryIntegrationTest {
 
     @Autowired
     private MenuRepository menuRepository;
-    private DynamoDBMapper dynamoDBMapper;
     @Autowired
     private AmazonDynamoDB amazonDynamoDB;
     @Autowired
@@ -41,16 +40,14 @@ public class MenuRepositoryIntegrationTest {
 
     @BeforeEach
     public void setup() {
-        dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
         dynamoDBMapper.batchDelete(menuRepository.findAll());
     }
 
     @Test
     public void testMenuIsReturned() {
         MenuSection menuSection = buildMenuSection();
-
         menuRepository.save(menuSection);
-
         List<MenuSection> result = (List<MenuSection>) menuRepository.findAll();
 
         //Then
@@ -60,7 +57,7 @@ public class MenuRepositoryIntegrationTest {
 
     @Test
     public void fillDb() throws Exception {
-        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>() {
+        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<>() {
         });
         menuSections.forEach(section -> menuRepository.save(section));
     }

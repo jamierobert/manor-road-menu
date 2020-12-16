@@ -29,4 +29,13 @@ public class MenuControllerTests {
                 .andExpect(jsonPath("$[0].name").value(containsString("Items")))
                 .andExpect(jsonPath("$[0].items[0].name").value(notNullValue()));
     }
+
+    @Test
+    public void testMenuEndpointOrdering() throws Exception {
+        mockMvc.perform(get("/menu"))
+                .andDo(print())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$[0].name").value(containsString("Breakfast Items")))
+                .andExpect(jsonPath("$[0].items[0].name").value(notNullValue()));
+    }
 }
