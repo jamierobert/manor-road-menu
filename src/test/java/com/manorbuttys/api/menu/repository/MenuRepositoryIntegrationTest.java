@@ -59,8 +59,9 @@ public class MenuRepositoryIntegrationTest {
     }
 
     @Test
-    public void fillDb() throws Exception{
-        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>(){});
+    public void fillDb() throws Exception {
+        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>() {
+        });
         menuSections.forEach(section -> menuRepository.save(section));
     }
 }

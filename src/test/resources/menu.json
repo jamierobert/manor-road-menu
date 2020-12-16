@@ -1,22 +1,22 @@
 [
   {
-  "name": "Breakfast Items",
-  "items": [
-    {
-      "name": "Bacon Butty",
-      "price": 2.50,
-      "count": 1
-    },
-    {
-      "name": "Egg Butty",
-      "price": 2.50,
-      "count": 0
-    }
-  ]
-},
+    "name": "Breakfast Items",
+    "items": [
+      {
+        "name": "Bacon Butty",
+        "price": 2.50,
+        "count": 0
+      },
+      {
+        "name": "Egg Butty",
+        "price": 2.50,
+        "count": 0
+      }
+    ]
+  },
   {
     "name": "Lunch Items",
-    "items":[
+    "items": [
       {
         "name": "Roast Beef and Onion Baguette",
         "price": 3.00,
@@ -28,11 +28,10 @@
         "count": 0
       }
     ]
-
   },
   {
     "name": "Dinner Items",
-    "items":[
+    "items": [
       {
         "name": "Fish Chips and Mushy Peas",
         "price": 5.00,

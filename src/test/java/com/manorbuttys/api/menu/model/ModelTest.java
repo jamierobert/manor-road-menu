@@ -16,9 +16,10 @@ public class ModelTest {
     ObjectMapper objectMapper;
 
     @Test
-    public void testDeserialization() throws Exception{
+    public void testDeserialization() throws Exception {
         objectMapper = new ObjectMapper();
-        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>(){});
+        List<MenuSection> menuSections = objectMapper.readValue(new File("src/test/resources/menu.json"), new TypeReference<List<MenuSection>>() {
+        });
         MenuSection menuSection = objectMapper.readValue(new File("src/test/resources/menu-section.json"), MenuSection.class);
         assertThat(menuSections.size(), equalTo(3));
         assertThat(menuSections.get(0).getName(), equalTo(menuSection.getName()));

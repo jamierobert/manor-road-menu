@@ -5,13 +5,11 @@ import com.manorbuttys.api.menu.model.MenuSection;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TestConstants {
 
-    public static List<Item> buildItems(){
+    public static List<Item> buildItems() {
         List<Item> items = new ArrayList<>();
         items.add(Item.builder()
                 .name("Devious Monkey")
@@ -21,7 +19,7 @@ public class TestConstants {
         return items;
     }
 
-    public static MenuSection buildMenuSection(){
+    public static MenuSection buildMenuSection() {
         List<Item> items = new ArrayList<>();
         items.add(Item.builder()
                 .name("Devious Monkey")
