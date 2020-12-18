@@ -15,7 +15,7 @@ import java.util.Objects;
 @DynamoDBTable(tableName = "Menu")
 @AllArgsConstructor
 @NoArgsConstructor
-public class MenuSection implements Comparable<MenuSection>{
+public class MenuSection implements Comparable<MenuSection> {
 
     private String id;
     private String name;

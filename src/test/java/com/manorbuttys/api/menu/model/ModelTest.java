@@ -14,13 +14,14 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+
 @SpringBootTest
 public class ModelTest {
     @Autowired
     ObjectMapper objectMapper;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         objectMapper = new ObjectMapper();
     }
 
@@ -67,10 +68,11 @@ public class ModelTest {
         assertThat(menu.get(1), equalTo(secondSection));
     }
 
-    public MenuSection getMenuSection() throws Exception{
+    public MenuSection getMenuSection() throws Exception {
         return objectMapper.readValue(new File("src/test/resources/menu-section.json"), MenuSection.class);
     }
-    public List<MenuSection> getMenu() throws Exception{
+
+    public List<MenuSection> getMenu() throws Exception {
         return objectMapper.readValue(new File("src/test/resources/menu.json"),
                 new TypeReference<>() {
                 });
